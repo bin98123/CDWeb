@@ -1,0 +1,48 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Spring Boot - Hibernate</title>
+<style>
+table, th, td, tr {
+	border: 1px solid black;
+}
+
+td {
+	padding-right: 30px;
+}
+</style>
+</head>
+<body>
+	<h1>List Customer:</h1>
+	<a th:href="@{/student-save}">Add Customer</a>
+	<br />
+	<br />
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Male</th>
+			<th>Birthday</th>
+			<th>Place of birth</th>
+			<th>Address</th>
+			<th>Department name</th>
+			<th>View</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+		<th:block th:each="student : ${listStudent}">
+			<tr>
+				<td><p th:text="${student.studentid}"></p></td>
+				<td><p th:text="${student.name}"></p></td>
+				<td><p th:text="${student.male}"></p></td>
+				<td><p th:text="${student.birthday}"></p></td>
+				<td><p th:text="${student.placeofbirth}"></p></td>
+				<td><p th:text="${student.address}"></p></td>
+				<td><p th:text="${student.depname}"></p></td>
+				<td><a th:href="@{/student-view/} + ${student.studentid}">View</a></td>
+				<td><a th:href="@{/student-update/} + ${student.studentid}">Edit</a></td>
+				<td><a th:href="@{/studentDelete/} + ${student.studentid}">Delete</a></td>
+			</tr>
+		</th:block>
+	</table>
+</body>
+</html>
