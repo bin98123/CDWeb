@@ -78,4 +78,10 @@ public class Student {
 		this.depname = depname;
 	}
 
+	@Override
+	public String toString() {
+		return "Student [studentid=" + studentid + ", name=" + name + ", male=" + male + ", birthday=" + birthday
+				+ ", placeofbirth=" + placeofbirth + ", address=" + address + ", depname=" + depname + "]";
+	}
+
 }

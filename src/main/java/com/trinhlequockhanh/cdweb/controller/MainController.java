@@ -1,8 +1,10 @@
 package com.trinhlequockhanh.cdweb.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +22,9 @@ public class MainController {
 	private StudentRepository studentRepository;
 
 	@RequestMapping(value = { "/", "/student-list" })
-	public String liststudent(Model model) {
+	public String liststudent(Model model)
+			throws UnsupportedEncodingException {
+		System.out.println(studentRepository.findAll());
 		model.addAttribute("listStudent", studentRepository.findAll());
 		return "student-list";
 	}
