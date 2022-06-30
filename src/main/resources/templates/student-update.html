@@ -1,8 +1,37 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Spring Boot - Hibernate</title>
+<script>
+	window.fbAsyncInit = function() {
+		FB.init({
+			appId : '402075408498842',
+			cookie : true,
+			xfbml : true,
+			version : 'v14.0'
+		});
+
+		FB.AppEvents.logPageView();
+
+	};
+
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) {
+			return;
+		}
+		js = d.createElement(s);
+		js.id = id;
+		js.src = "https://connect.facebook.net/en_US/sdk.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>
+<script type="text/javascript">
+function loginFB(){
+	window.location.href="https://www.facebook.com/dialog/oauth?client_id=402075408498842&redirect_uri=https://localhost:443"
+	
+}
+</script>
+
 </head>
 <body>
 	<a th:href="@{/student-list}">List Customer</a>
@@ -10,14 +39,21 @@
 	<h1>Edit Customer:</h1>
 	<form th:action="@{/updateStudent}" method="POST"
 		th:object="${student}">
-		Id: <input th:field="*{studentid}" readonly="true" /><br /> <br /> Name: <input
-			th:field="*{name}" /> <br /> <br /> Male: <input
+		Id: <input th:field="*{studentid}" readonly="true" /><br /> <br />
+		Name: <input th:field="*{name}" /> <br /> <br /> Male: <input
 			th:field="*{male}" /> <br /> <br /> Birthday: <input
-			th:field="*{birthday}"  type="date"/> <br /> <br /> Place of birth: <input
-			th:field="*{placeofbirth}" /> <br /> <br /> Address: <input
+			th:field="*{birthday}" type="date" /> <br /> <br /> Place of birth:
+		<input th:field="*{placeofbirth}" /> <br /> <br /> Address: <input
 			th:field="*{address}" /> <br /> <br /> Department name: <input
 			th:field="*{depname}" /> <br /> <br /> <input type="submit"
 			value="Submit" />
 	</form>
+	<button
+		th:attr="onclick=|loginFB()|">login
+		FB</button>
+		<fb:login-button 
+  scope="public_profile,email"
+  onlogin="checkLoginState();">
+</fb:login-button>
 </body>
 </html>
